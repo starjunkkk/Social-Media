@@ -92,15 +92,27 @@ fun SocialMediaApp(
                 currentRoute = currentRoute,
                 onHomeClick = {
                     Log.d("MyApp", "pencet home")
-                    navController.navigate(SocialMedia.Home.name)
+                    navController.navigate(SocialMedia.Home.name) {
+                        popUpTo(navController.graph.startDestinationId) { saveState = true }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
                               },
                 onMessageClick = {
                     Log.d("MyApp", "pencet message")
-                    navController.navigate(SocialMedia.Message.name)
+                    navController.navigate(SocialMedia.Message.name) {
+                        popUpTo(navController.graph.startDestinationId) { saveState = true }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
                                  },
                 onProfileClick = {
                     Log.d("MyApp", "pencet profile")
-                    navController.navigate(SocialMedia.Profile.name)
+                    navController.navigate(SocialMedia.Profile.name) {
+                        popUpTo(navController.graph.startDestinationId) { saveState = true }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
                 }
             )
         }
