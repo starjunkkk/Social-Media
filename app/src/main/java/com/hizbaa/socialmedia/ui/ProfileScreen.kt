@@ -97,6 +97,7 @@ fun ProfileScreen(
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text(uiState.name)
+        Spacer(modifier = Modifier.height(8.dp))
         Text(uiState.age.toString())
     }
 
