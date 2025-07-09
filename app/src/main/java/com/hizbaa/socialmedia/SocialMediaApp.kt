@@ -22,11 +22,13 @@ import androidx.navigation.compose.rememberNavController
 import com.hizbaa.socialmedia.ui.HomeScreen
 import com.hizbaa.socialmedia.ui.MessageScreen
 import com.hizbaa.socialmedia.ui.ProfileScreen
+import com.hizbaa.socialmedia.ui.SettingsScreen
 
 enum class SocialMedia() {
     Home,
     Message,
-    Profile
+    Profile,
+    Settings
 }
 
 @Composable
@@ -105,6 +107,7 @@ fun SocialMediaApp(
                         launchSingleTop = true
                         restoreState = true
                     }
+
                                  },
                 onProfileClick = {
                     Log.d("MyApp", "pencet profile")
@@ -129,7 +132,18 @@ fun SocialMediaApp(
                 MessageScreen()
             }
             composable (route = SocialMedia.Profile.name) {
-                ProfileScreen()
+                ProfileScreen(
+                    onSettingsClick = {
+                        navController.navigate(SocialMedia.Settings.name) {
+                            popUpTo(navController.graph.startDestinationId) { saveState = true }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    }
+                )
+            }
+            composable (route = SocialMedia.Settings.name) {
+                SettingsScreen()
             }
         }
     }
